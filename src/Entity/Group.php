@@ -41,7 +41,7 @@ class Group implements GroupInterface
      */
     private $users;
 
-    private function __construct(string $name)
+    public function __construct(string $name)
     {
         $this->name = $name;
         $this->users = new ArrayCollection();

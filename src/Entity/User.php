@@ -63,7 +63,7 @@ class User implements UserInterface
      */
     private $createdAt;
 
-    private function __construct(string $email,
+    public function __construct(string $email,
                                  string $lastName,
                                  string $firstName,
                                  bool $isActive,
