@@ -1,0 +1,25 @@
+services:
+    api.v1.action.get_user:
+        class: App\Http\v1\Action\User\GetSingleUserAction
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]
+
+    api.v1.action.update_user:
+        class: App\Http\v1\Action\User\UpdateUserAction
+        arguments: ['@user_repository']
+        tags: ['controller.service_arguments']
+
+    api.v1.action.get_user_list:
+        class: App\Http\v1\Action\User\GetUserListAction
+        arguments: ['@user_repository']
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]
+
+    api.v1.action.create_user:
+        class: App\Http\v1\Action\User\CreateUserAction
+        arguments: ['@user_repository']
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]

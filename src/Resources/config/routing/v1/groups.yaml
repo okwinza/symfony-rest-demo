@@ -1,0 +1,27 @@
+api_v1_group_list:
+    path: /groups
+    methods: [GET]
+    defaults:
+        _controller: api.v1.action.get_group_list
+
+api_v1_group_create:
+    path: /groups
+    methods: [POST]
+    defaults:
+        _controller: api.v1.action.create_group
+
+api_v1_group_show:
+    path: /groups/{group_id}
+    methods: [GET]
+    defaults:
+        _controller: api.v1.action.get_group
+    requirements:
+        group_id: '\d+'
+
+api_v1_group_update:
+    path: /groups/{group_id}
+    methods: [POST]
+    defaults:
+        _controller: api.v1.action.update_group
+    requirements:
+        group_id: '\d+'

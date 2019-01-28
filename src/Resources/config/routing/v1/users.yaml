@@ -1,0 +1,27 @@
+api_v1_user_list:
+    path: /users
+    methods: [GET]
+    defaults:
+        _controller: api.v1.action.get_user_list
+
+api_v1_user_create:
+    path: /users
+    methods: [POST]
+    defaults:
+        _controller: api.v1.action.create_user
+
+api_v1_user_show:
+    path: /users/{user_id}
+    methods: [GET]
+    defaults:
+        _controller: api.v1.action.get_user
+    requirements:
+        user_id: '\d+'
+
+api_v1_user_update:
+    path: /users/{user_id}
+    methods: [POST]
+    defaults:
+        _controller: api.v1.action.update_user
+    requirements:
+        user_id: '\d+'

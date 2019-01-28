@@ -1,0 +1,19 @@
+imports:
+  - { resource: services/actions/users.v1.yaml }
+  - { resource: services/actions/groups.v1.yaml }
+  - { resource: services/argument_resolvers.v1.yaml }
+  - { resource: services/transformers.yaml }
+  - { resource: services/repositories.yaml }
+
+services:
+    api.exception_subscriber:
+      class: App\Subscriber\ApiExceptionSubscriber
+      arguments: ["%kernel.environment%"]
+      tags:
+        - { name: kernel.event_subscriber }
+
+    api.group_denormalizer:
+      class: App\Http\v1\Serializer\GroupDenormalizer
+      arguments: ["@user_repository", "@serializer.normalizer.object"]
+      tags:
+        - { name: serializer.normalizer }

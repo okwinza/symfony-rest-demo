@@ -1,0 +1,8 @@
+services:
+    api.v1.transformer.group:
+        class: App\Http\v1\Transformer\GroupTransformer
+        public: true
+
+    api.v1.transformer.user:
+        class: App\Http\v1\Transformer\UserTransformer
+        public: true

@@ -1,0 +1,25 @@
+services:
+    api.v1.action.get_group:
+        class: App\Http\v1\Action\Group\GetSingleGroupAction
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]
+
+    api.v1.action.update_group:
+        class: App\Http\v1\Action\Group\UpdateGroupAction
+        arguments: ['@group_repository']
+        tags: ['controller.service_arguments']
+
+    api.v1.action.get_group_list:
+        class: App\Http\v1\Action\Group\GetGroupListAction
+        arguments: ['@group_repository']
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]
+
+    api.v1.action.create_group:
+        class: App\Http\v1\Action\Group\CreateGroupAction
+        arguments: ['@group_repository']
+        tags: ['controller.service_arguments']
+        calls:
+            - [setFractalManager, ['@sam_j_fractal.manager']]

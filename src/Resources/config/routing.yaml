@@ -1,0 +1,6 @@
+app_v1:
+  prefix: /api/v1
+  resource: "routing/v1/"
+  type: directory
+  defaults:
+    _format: json

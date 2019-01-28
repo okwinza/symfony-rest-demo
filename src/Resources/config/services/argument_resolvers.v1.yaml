@@ -1,0 +1,36 @@
+services:
+    api.v1.argument_resolver.get_group:
+        class: App\Http\v1\Action\Group\ArgumentResolver\GetGroupResolver
+        arguments: ["@group_repository"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 88 }
+
+    api.v1.argument_resolver.create_group:
+        class: App\Http\v1\Action\Group\ArgumentResolver\CreateGroupRequestResolver
+        arguments: ["@serializer", "@validator"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 50 }
+
+    api.v1.argument_resolver.update_group:
+        class: App\Http\v1\Action\Group\ArgumentResolver\UpdateGroupRequestResolver
+        arguments: ["@group_repository", "@serializer", "@validator"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 55 }
+
+    api.v1.argument_resolver.get_user:
+        class: App\Http\v1\Action\User\ArgumentResolver\GetUserResolver
+        arguments: ["@user_repository"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 88 }
+
+    api.v1.argument_resolver.create_user:
+        class: App\Http\v1\Action\User\ArgumentResolver\CreateUserRequestResolver
+        arguments: ["@group_repository", "@serializer", "@validator"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 50 }
+
+    api.v1.argument_resolver.update_user:
+        class: App\Http\v1\Action\User\ArgumentResolver\UpdateUserRequestResolver
+        arguments: ["@user_repository", "@group_repository", "@serializer", "@validator"]
+        tags:
+            - { name: controller.argument_value_resolver, priority: 55 }
