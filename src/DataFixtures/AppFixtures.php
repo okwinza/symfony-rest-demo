@@ -54,9 +54,7 @@ class AppFixtures implements FixtureInterface
 
     private function getRandomGroup()
     {
-        $key = array_rand($this->groups);
-
-        return $this->groups[$key];
+        return $this->groups[rand(0, 1)];
     }
 
 }

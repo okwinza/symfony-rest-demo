@@ -1,7 +1,7 @@
 <?php
 
-use Behat\Behat\Context\Context;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Behat\Behat\Context\Context;
 
 /**
  * This context class contains the definitions of the steps used by the demo 
