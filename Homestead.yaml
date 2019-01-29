@@ -1,0 +1,20 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 4
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: ./
+        to: /vagrant
+sites:
+    -
+        map: sf-rest.test
+        to: /vagrant/public
+        php: "7.2"
+databases:
+    - rest_demo
+name: sf-rest-demo
+hostname: sf-rest-demo
