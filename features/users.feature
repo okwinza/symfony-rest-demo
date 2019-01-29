@@ -18,10 +18,11 @@ Feature: Users feature
     And the JSON node "data" should have 7 elements
     And the JSON node "data.email" should contain "okwinza2@yandex.com"
     And the JSON node "data.group_data.id" should contain "1"
+    And the JSON node "data.is_active" should be true
 
 
   Scenario: Updating an existing user
-    When I add "Content-Type" header equal to "application/json"
+    Given I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/users/1" with body:
     """
@@ -33,8 +34,15 @@ Feature: Users feature
         "group_id": 2
     }
     """
-    Then the response status code should be 204
-    And the response should be empty
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/api/v1/users/1"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json"
+    And the JSON node "data" should have 7 elements
+    And the JSON node "data.email" should contain "okwinza2@test.com"
+    And the JSON node "data.group_data.id" should contain "2"
+    And the JSON node "data.is_active" should be false
 
 
   Scenario: Viewing user list after creating one
