@@ -37,7 +37,7 @@ class GroupDenormalizer implements DenormalizerInterface
          */
         $object = $this->objectNormalizer->denormalize($data, $class, $format, $context);
 
-        if (is_array($data['user_ids'])) {
+        if (isset($data['user_ids']) && is_array($data['user_ids'])) {
             $object->setUsers($this->objectsFromIds($data['user_ids']));
         }
 
